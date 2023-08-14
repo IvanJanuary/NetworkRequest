@@ -34,7 +34,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        let api = "https://api.github.com/search/repositories?q="
+        let api = "https://api.github.com/search/repositories?q=\(query)"
         guard let url = URL(string: api) else { fatalError("some Error") }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
                     self.tableView.reloadData()
                 }
             } catch {
-                print("Decoding error JSON: \(error.localizedDescription)")
+                print("Decoding error JSON: \(error)")
             }
         }
         task.resume()
@@ -61,14 +61,15 @@ class ViewController: UIViewController, UISearchBarDelegate {
 }
 
 
-struct SearchResult: Codable {
-    let items: [Repository]
-}
 
-struct Repository: Codable {
-    let name: String
-    let description: String?
-}
+//struct SearchResult: Codable {
+//    let items: [Repository]
+//}
+//
+//struct Repository: Codable {
+//    let name: String
+//    // let description: String?
+//}
 
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -80,7 +81,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let repository = repositories[indexPath.row]
         cell.textLabel?.text = repository.name
-        cell.detailTextLabel?.text = repository.description ?? "No description available"
+        // cell.detailTextLabel?.text = repository.description ?? "No description available"
         return cell
     }
 }
