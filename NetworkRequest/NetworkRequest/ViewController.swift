@@ -60,18 +60,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
-
-
-//struct SearchResult: Codable {
-//    let items: [Repository]
-//}
-//
-//struct Repository: Codable {
-//    let name: String
-//    // let description: String?
-//}
-
-
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repositories.count
