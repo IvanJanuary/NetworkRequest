@@ -27,7 +27,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchRepositories(withQuery: searchText)
     }
     
-    func searchRepositories(withQuery query: String) {
+    private func searchRepositories(withQuery query: String) {
         guard !query.isEmpty else {
             repositories.removeAll()
             tableView.reloadData()
@@ -69,7 +69,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let repository = repositories[indexPath.row]
         cell.textLabel?.text = repository.name
-        // cell.detailTextLabel?.text = repository.description ?? "No description available"
+        cell.detailTextLabel?.text = repository.description ?? "No description available"
         return cell
     }
 }
