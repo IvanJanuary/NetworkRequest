@@ -40,21 +40,39 @@
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnm-Iv-emd">
                                 <rect key="frame" x="0.0" y="761" width="390" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Repositories" id="k0R-0l-PF5"/>
-                                    <tabBarItem title="Issures" id="VGE-6Y-uyz"/>
-                                </items>
+                                <items/>
                             </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-Jl-kDW">
+                                <rect key="frame" x="292" y="779.66666666666663" width="78" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Issures"/>
+                                <connections>
+                                    <action selector="issuresButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cD1-30-1ZQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWC-hD-wIU">
+                                <rect key="frame" x="19.999999999999993" y="779.66666666666663" width="118.33333333333331" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Repositories"/>
+                                <connections>
+                                    <action selector="repositoriesButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5w3-1l-rfZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mn0-0p-3Iz" firstAttribute="top" secondItem="hh9-38-fuo" secondAttribute="bottom" id="5et-5X-DWz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s0n-Jl-kDW" secondAttribute="trailing" constant="20" id="9l3-xY-St0"/>
                             <constraint firstItem="hh9-38-fuo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ar3-6z-I34"/>
                             <constraint firstItem="mn0-0p-3Iz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DtT-TR-VZj"/>
                             <constraint firstItem="Wnm-Iv-emd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ih1-3y-i7e"/>
                             <constraint firstItem="mn0-0p-3Iz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="P2q-cF-5SW"/>
+                            <constraint firstItem="s0n-Jl-kDW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LWC-hD-wIU" secondAttribute="trailing" constant="8" symbolic="YES" id="Pcp-KE-5h0"/>
+                            <constraint firstAttribute="bottom" secondItem="LWC-hD-wIU" secondAttribute="bottom" constant="30" id="Sqy-7J-Pa1"/>
+                            <constraint firstItem="LWC-hD-wIU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wdw-R5-Oru"/>
                             <constraint firstAttribute="bottom" secondItem="Wnm-Iv-emd" secondAttribute="bottom" id="ia3-eC-Zli"/>
+                            <constraint firstAttribute="bottom" secondItem="s0n-Jl-kDW" secondAttribute="bottom" constant="30" id="imq-gh-mFM"/>
                             <constraint firstItem="hh9-38-fuo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lTb-Y3-u2Q"/>
                             <constraint firstItem="Wnm-Iv-emd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="m7I-aN-XKk"/>
                             <constraint firstItem="hh9-38-fuo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rs1-Ar-hpd"/>
@@ -63,8 +81,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search with Github" id="tmX-43-A5n"/>
                     <connections>
-                        <outlet property="issureTabBarItem" destination="VGE-6Y-uyz" id="1kq-E8-jeZ"/>
-                        <outlet property="repositoryTabBarItem" destination="k0R-0l-PF5" id="RZN-aE-e7t"/>
+                        <outlet property="issuresTabBarButton" destination="s0n-Jl-kDW" id="tyf-hg-YXh"/>
+                        <outlet property="repositoriesTabBarButton" destination="LWC-hD-wIU" id="2JT-QO-Lbc"/>
                         <outlet property="searchBar" destination="hh9-38-fuo" id="tLU-od-puc"/>
                         <outlet property="tableView" destination="mn0-0p-3Iz" id="VMw-tt-Ees"/>
                     </connections>
