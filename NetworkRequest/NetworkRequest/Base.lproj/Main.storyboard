@@ -37,21 +37,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnm-Iv-emd">
+                                <rect key="frame" x="0.0" y="761" width="390" height="83"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Repositories" id="k0R-0l-PF5"/>
+                                    <tabBarItem title="Issures" id="VGE-6Y-uyz"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mn0-0p-3Iz" secondAttribute="trailing" id="7BM-IZ-JOe"/>
-                            <constraint firstItem="hh9-38-fuo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C2V-rr-e2r"/>
-                            <constraint firstItem="mn0-0p-3Iz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PKy-Lb-Cvj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mn0-0p-3Iz" secondAttribute="bottom" id="Ubl-NP-fyL"/>
-                            <constraint firstItem="mn0-0p-3Iz" firstAttribute="top" secondItem="hh9-38-fuo" secondAttribute="bottom" id="Udk-E4-ezQ"/>
-                            <constraint firstItem="hh9-38-fuo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cQJ-Tu-JGv"/>
-                            <constraint firstItem="hh9-38-fuo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ri2-ik-Fif"/>
+                            <constraint firstItem="mn0-0p-3Iz" firstAttribute="top" secondItem="hh9-38-fuo" secondAttribute="bottom" id="5et-5X-DWz"/>
+                            <constraint firstItem="hh9-38-fuo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ar3-6z-I34"/>
+                            <constraint firstItem="mn0-0p-3Iz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DtT-TR-VZj"/>
+                            <constraint firstItem="Wnm-Iv-emd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ih1-3y-i7e"/>
+                            <constraint firstItem="mn0-0p-3Iz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="P2q-cF-5SW"/>
+                            <constraint firstAttribute="bottom" secondItem="Wnm-Iv-emd" secondAttribute="bottom" id="ia3-eC-Zli"/>
+                            <constraint firstItem="hh9-38-fuo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lTb-Y3-u2Q"/>
+                            <constraint firstItem="Wnm-Iv-emd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="m7I-aN-XKk"/>
+                            <constraint firstItem="hh9-38-fuo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rs1-Ar-hpd"/>
+                            <constraint firstItem="mn0-0p-3Iz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uQf-3N-2dE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search with Github" id="tmX-43-A5n"/>
                     <connections>
+                        <outlet property="issureTabBarItem" destination="VGE-6Y-uyz" id="1kq-E8-jeZ"/>
+                        <outlet property="repositoryTabBarItem" destination="k0R-0l-PF5" id="RZN-aE-e7t"/>
                         <outlet property="searchBar" destination="hh9-38-fuo" id="tLU-od-puc"/>
                         <outlet property="tableView" destination="mn0-0p-3Iz" id="VMw-tt-Ees"/>
                     </connections>
