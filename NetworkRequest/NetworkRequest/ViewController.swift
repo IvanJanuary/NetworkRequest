@@ -12,6 +12,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var repositoryTabBarItem: UITabBarItem!
+    @IBOutlet weak var issureTabBarItem: UITabBarItem!
+    
     private var repositories: [Repository] = []
 
     override func viewDidLoad() {
