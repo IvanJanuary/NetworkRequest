@@ -12,8 +12,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var repositoryTabBarItem: UITabBarItem!
-    @IBOutlet weak var issureTabBarItem: UITabBarItem!
+    @IBOutlet weak var repositoriesTabBarButton: UIButton!
+    @IBOutlet weak var issuresTabBarButton: UIButton!
     
     private var repositories: [Repository] = []
 
@@ -24,6 +24,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+    
+    @IBAction func repositoriesButtonAction(_ sender: UIButton) {
+    }
+    @IBAction func issuresButtonAction(_ sender: UIButton) {
+    }
+    
     
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
