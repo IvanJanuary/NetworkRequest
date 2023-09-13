@@ -7,13 +7,12 @@
 
 import UIKit
 
-class IssureViewController: UIViewController, UISearchBarDelegate {
-   
+class IssueViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    private var repositories: [Repository] = []
+    private var issues: [Issue] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +24,22 @@ class IssureViewController: UIViewController, UISearchBarDelegate {
         
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        searchRepositories(withQuery: searchText)
+        searchIssues(withQuery: searchText)
     }
     
-    private func searchRepositories(withQuery query: String) {
+    private func searchIssues(withQuery query: String) {
         guard !query.isEmpty else {
-            repositories.removeAll()
+            issues.removeAll()
             tableView.reloadData()
             return
         }
         
-        let api = "https://api.github.com/search/repositories?q=\(query)"
+        let api = "https://api.github.com/search/issues?q=\(query)" 
         guard let url = URL(string: api) else { fatalError("some Error") }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let error = error {
-                print("Ошибка запроса: \(error.localizedDescription)")
+                print("Request error: \(error.localizedDescription)")
                 return
             }
             
@@ -48,29 +47,29 @@ class IssureViewController: UIViewController, UISearchBarDelegate {
             
             do {
                 let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(SearchResult.self, from: data)
+                let searchResult = try decoder.decode(IssueSearchResult.self, from: data)
                 DispatchQueue.main.async {
-                    self.repositories = searchResult.items
+                    self.issues = searchResult.items
                     self.tableView.reloadData()
                 }
             } catch {
-                print("Decoding error JSON: \(error)")
+                print("JSON decoding error: \(error)")
             }
         }
         task.resume()
     }
 }
 
-extension IssureViewController: UITableViewDataSource, UITableViewDelegate {
+extension IssueViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositories.count
+        return issues.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository.name
-        cell.detailTextLabel?.text = repository.description ?? "No description available"
+        let issue = issues[indexPath.row]
+        cell.textLabel?.text = issue.title
+        cell.detailTextLabel?.text = issue.url ?? "No description available"
         return cell
     }
 }
