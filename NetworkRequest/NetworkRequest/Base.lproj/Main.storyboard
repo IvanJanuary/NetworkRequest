@@ -189,7 +189,7 @@
         <!--Commits-->
         <scene sceneID="Fn9-PO-P49">
             <objects>
-                <viewController id="k3C-Xy-Utu" customClass="IssueViewController" customModule="NetworkRequest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k3C-Xy-Utu" customClass="CommitViewController" customModule="NetworkRequest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ohf-Vq-gGT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,13 +205,61 @@
                                 <rect key="frame" x="0.0" y="147" width="390" height="614"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="KEX-5r-jxP">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="121" id="KEX-5r-jxP" customClass="CommitTableViewCell" customModule="NetworkRequest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="390" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KEX-5r-jxP" id="Dqu-PG-FIm">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KEX-5r-jxP" id="Dqu-PG-FIm" customClass="CommitTableViewCell">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commit" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LI5-sD-f3Y">
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75C-dc-wcV">
+                                                    <rect key="frame" x="20" y="36.333333333333336" width="350" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mp-Au-hJh">
+                                                    <rect key="frame" x="20" y="64.333333333333329" width="350" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-JH-9Vm">
+                                                    <rect key="frame" x="20" y="89.666666666666671" width="350" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="75C-dc-wcV" firstAttribute="top" secondItem="LI5-sD-f3Y" secondAttribute="bottom" constant="5" id="6NR-75-V3e"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="75C-dc-wcV" secondAttribute="trailing" id="6th-Ob-R5b"/>
+                                                <constraint firstItem="9ZF-JH-9Vm" firstAttribute="leading" secondItem="Dqu-PG-FIm" secondAttribute="leadingMargin" id="83b-Pe-0RK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9ZF-JH-9Vm" secondAttribute="trailing" id="Kt2-rF-Ozg"/>
+                                                <constraint firstItem="9mp-Au-hJh" firstAttribute="top" secondItem="75C-dc-wcV" secondAttribute="bottom" constant="5" id="NcA-Ue-G8g"/>
+                                                <constraint firstItem="9ZF-JH-9Vm" firstAttribute="top" secondItem="9mp-Au-hJh" secondAttribute="bottom" constant="5" id="O0k-yz-qSo"/>
+                                                <constraint firstItem="9ZF-JH-9Vm" firstAttribute="bottom" secondItem="Dqu-PG-FIm" secondAttribute="bottomMargin" id="PUt-sH-v5Z"/>
+                                                <constraint firstItem="LI5-sD-f3Y" firstAttribute="trailing" secondItem="Dqu-PG-FIm" secondAttribute="trailingMargin" id="RP8-ap-LES"/>
+                                                <constraint firstItem="LI5-sD-f3Y" firstAttribute="top" secondItem="Dqu-PG-FIm" secondAttribute="topMargin" id="V3t-OS-wLT"/>
+                                                <constraint firstItem="75C-dc-wcV" firstAttribute="leading" secondItem="Dqu-PG-FIm" secondAttribute="leadingMargin" id="qJd-cc-5W1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9mp-Au-hJh" secondAttribute="trailing" id="quF-k4-SGs"/>
+                                                <constraint firstItem="LI5-sD-f3Y" firstAttribute="leading" secondItem="Dqu-PG-FIm" secondAttribute="leadingMargin" id="rRB-J2-nbF"/>
+                                                <constraint firstItem="9ZF-JH-9Vm" firstAttribute="top" secondItem="9mp-Au-hJh" secondAttribute="bottom" constant="5" id="wfi-rT-x2x"/>
+                                                <constraint firstItem="9mp-Au-hJh" firstAttribute="leading" secondItem="Dqu-PG-FIm" secondAttribute="leadingMargin" id="xyZ-f2-Ugk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="9mp-Au-hJh" id="CAX-ba-KNQ"/>
+                                            <outlet property="commitLabel" destination="LI5-sD-f3Y" id="h8t-Bw-vtT"/>
+                                            <outlet property="repositoryLabel" destination="9ZF-JH-9Vm" id="qQA-ih-bxY"/>
+                                            <outlet property="urlLabel" destination="75C-dc-wcV" id="Wh7-rW-n6T"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -236,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84t-0S-5xI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1162" y="1370"/>
+            <point key="canvasLocation" x="1161.5384615384614" y="1369.9052132701422"/>
         </scene>
     </scenes>
     <resources>
