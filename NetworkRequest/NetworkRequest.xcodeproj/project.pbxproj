@@ -7,27 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C572F712A90E910004D086D /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C572F702A90E910004D086D /* Issue.swift */; };
+		2C572F732A90EA68004D086D /* IssueSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C572F722A90EA68004D086D /* IssueSearchResult.swift */; };
 		2C8013CE2A7A5E2800CFAF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8013CD2A7A5E2800CFAF97 /* AppDelegate.swift */; };
 		2C8013D02A7A5E2800CFAF97 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8013CF2A7A5E2800CFAF97 /* SceneDelegate.swift */; };
-		2C8013D22A7A5E2800CFAF97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8013D12A7A5E2800CFAF97 /* ViewController.swift */; };
+		2C8013D22A7A5E2800CFAF97 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8013D12A7A5E2800CFAF97 /* RepositoryViewController.swift */; };
 		2C8013D52A7A5E2800CFAF97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8013D32A7A5E2800CFAF97 /* Main.storyboard */; };
 		2C8013D72A7A5E2A00CFAF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C8013D62A7A5E2A00CFAF97 /* Assets.xcassets */; };
 		2C8013DA2A7A5E2A00CFAF97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8013D82A7A5E2A00CFAF97 /* LaunchScreen.storyboard */; };
+		2C81908A2AB9BB9400DE1603 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8190892AB9BB9400DE1603 /* Commit.swift */; };
+		2C81908C2AB9BBDD00DE1603 /* CommitSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81908B2AB9BBDD00DE1603 /* CommitSearchResult.swift */; };
+		2C8190902AB9BF8800DE1603 /* CommitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81908F2AB9BF8800DE1603 /* CommitViewController.swift */; };
+		2C8190942AB9C90E00DE1603 /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8190932AB9C90E00DE1603 /* CommitTableViewCell.swift */; };
 		2C9379D72A8A5AD000582BB8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9379D62A8A5AD000582BB8 /* SearchResult.swift */; };
 		2C9379D92A8A5BDE00582BB8 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9379D82A8A5BDE00582BB8 /* Repository.swift */; };
+		2CA92A1E2A8CE51E00FF6FD1 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA92A1D2A8CE51E00FF6FD1 /* IssueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C572F702A90E910004D086D /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		2C572F722A90EA68004D086D /* IssueSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueSearchResult.swift; sourceTree = "<group>"; };
 		2C8013CA2A7A5E2800CFAF97 /* NetworkRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8013CD2A7A5E2800CFAF97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C8013CF2A7A5E2800CFAF97 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2C8013D12A7A5E2800CFAF97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C8013D12A7A5E2800CFAF97 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		2C8013D42A7A5E2800CFAF97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C8013D62A7A5E2A00CFAF97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C8013D92A7A5E2A00CFAF97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C8013DB2A7A5E2A00CFAF97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C8190892AB9BB9400DE1603 /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		2C81908B2AB9BBDD00DE1603 /* CommitSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitSearchResult.swift; sourceTree = "<group>"; };
+		2C81908F2AB9BF8800DE1603 /* CommitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewController.swift; sourceTree = "<group>"; };
+		2C8190932AB9C90E00DE1603 /* CommitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		2C9379D62A8A5AD000582BB8 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		2C9379D82A8A5BDE00582BB8 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		2CA92A1D2A8CE51E00FF6FD1 /* IssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +77,8 @@
 				2C8013CD2A7A5E2800CFAF97 /* AppDelegate.swift */,
 				2C8013CF2A7A5E2800CFAF97 /* SceneDelegate.swift */,
 				2C9379DA2A8A5C4C00582BB8 /* Model */,
-				2C8013D12A7A5E2800CFAF97 /* ViewController.swift */,
+				2C8190952AB9CA1E00DE1603 /* Controller */,
+				2C8190932AB9C90E00DE1603 /* CommitTableViewCell.swift */,
 				2C8013D32A7A5E2800CFAF97 /* Main.storyboard */,
 				2C8013D62A7A5E2A00CFAF97 /* Assets.xcassets */,
 				2C8013D82A7A5E2A00CFAF97 /* LaunchScreen.storyboard */,
@@ -72,11 +87,25 @@
 			path = NetworkRequest;
 			sourceTree = "<group>";
 		};
+		2C8190952AB9CA1E00DE1603 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C8013D12A7A5E2800CFAF97 /* RepositoryViewController.swift */,
+				2CA92A1D2A8CE51E00FF6FD1 /* IssueViewController.swift */,
+				2C81908F2AB9BF8800DE1603 /* CommitViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		2C9379DA2A8A5C4C00582BB8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				2C9379D82A8A5BDE00582BB8 /* Repository.swift */,
 				2C9379D62A8A5AD000582BB8 /* SearchResult.swift */,
+				2C572F702A90E910004D086D /* Issue.swift */,
+				2C572F722A90EA68004D086D /* IssueSearchResult.swift */,
+				2C8190892AB9BB9400DE1603 /* Commit.swift */,
+				2C81908B2AB9BBDD00DE1603 /* CommitSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,9 +181,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C8013D22A7A5E2800CFAF97 /* ViewController.swift in Sources */,
+				2C81908A2AB9BB9400DE1603 /* Commit.swift in Sources */,
+				2C572F732A90EA68004D086D /* IssueSearchResult.swift in Sources */,
+				2C8013D22A7A5E2800CFAF97 /* RepositoryViewController.swift in Sources */,
+				2C572F712A90E910004D086D /* Issue.swift in Sources */,
+				2C8190942AB9C90E00DE1603 /* CommitTableViewCell.swift in Sources */,
 				2C8013CE2A7A5E2800CFAF97 /* AppDelegate.swift in Sources */,
 				2C9379D92A8A5BDE00582BB8 /* Repository.swift in Sources */,
+				2CA92A1E2A8CE51E00FF6FD1 /* IssueViewController.swift in Sources */,
+				2C81908C2AB9BBDD00DE1603 /* CommitSearchResult.swift in Sources */,
+				2C8190902AB9BF8800DE1603 /* CommitViewController.swift in Sources */,
 				2C9379D72A8A5AD000582BB8 /* SearchResult.swift in Sources */,
 				2C8013D02A7A5E2800CFAF97 /* SceneDelegate.swift in Sources */,
 			);
