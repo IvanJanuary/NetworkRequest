@@ -25,10 +25,10 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
 
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        searchCommits(withQuery: searchText)
+        searchCommits(withQuery: searchText, type: CommitSearchResult.self) //type: CommitSearchResult.self
     }
     
-    private func searchCommits(withQuery query: String) {
+    private func searchCommits<T: SearchResult>(withQuery query: String, type: T.Type) { //<T: SearchResult>  type: T.Type
         guard !query.isEmpty else {
             commits.removeAll()
             tableView.reloadData()
@@ -48,9 +48,9 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
             
             do {
                 let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(CommitSearchResult.self, from: data)
+                let searchResult = try decoder.decode(T.self, from: data) //T.self instead CommitSearchResult.self
                 DispatchQueue.main.async {
-                    self.commits = searchResult.items
+                    self.commits = searchResult.items as? [CommitItem] ?? [] //unwrapped as? [CommitItem] ?? []
                     self.tableView.reloadData()
                 }
             } catch {

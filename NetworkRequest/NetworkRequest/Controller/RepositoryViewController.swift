@@ -24,10 +24,10 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
         
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        searchRepositories(withQuery: searchText)
+        searchRepositories(withQuery: searchText, type: RepositorySearchResult.self) //type: RepositorySearchResult.self
     }
-    
-    private func searchRepositories(withQuery query: String) {
+                                                                            
+    private func searchRepositories<T: SearchResult>(withQuery query: String, type: T.Type) { //<T: SearchResult> type: T.Type
         guard !query.isEmpty else {
             repositories.removeAll()
             tableView.reloadData()
@@ -47,9 +47,9 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
             
             do {
                 let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(SearchResult.self, from: data)
+                let searchResult = try decoder.decode(T.self, from: data) // T.self instead RepositorySearchResult.self
                 DispatchQueue.main.async {
-                    self.repositories = searchResult.items
+                    self.repositories = searchResult.items as? [Repository] ?? [] // unwrapped as? [Repository] ?? []
                     self.tableView.reloadData()
                 }
             } catch {

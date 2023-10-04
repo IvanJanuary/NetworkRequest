@@ -24,10 +24,10 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
         
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        searchIssues(withQuery: searchText)
+        searchIssues(withQuery: searchText, type: IssueSearchResult.self) //type: IssueSearchResult.self
     }
     
-    private func searchIssues(withQuery query: String) {
+    private func searchIssues<T: SearchResult>(withQuery query: String, type: T.Type) {  //<T: SearchResult>  type: T.Type
         guard !query.isEmpty else {
             issues.removeAll()
             tableView.reloadData()
@@ -47,9 +47,9 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             
             do {
                 let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(IssueSearchResult.self, from: data)
+                let searchResult = try decoder.decode(T.self, from: data)   //T.self instead IssueSearchResult.self
                 DispatchQueue.main.async {
-                    self.issues = searchResult.items
+                    self.issues = searchResult.items as? [Issue] ?? []   //unwrapped as? [Issue] ?? []
                     self.tableView.reloadData()
                 }
             } catch {
