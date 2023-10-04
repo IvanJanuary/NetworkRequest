@@ -19,8 +19,10 @@
 		2C81908C2AB9BBDD00DE1603 /* CommitSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81908B2AB9BBDD00DE1603 /* CommitSearchResult.swift */; };
 		2C8190902AB9BF8800DE1603 /* CommitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81908F2AB9BF8800DE1603 /* CommitViewController.swift */; };
 		2C8190942AB9C90E00DE1603 /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8190932AB9C90E00DE1603 /* CommitTableViewCell.swift */; };
-		2C9379D72A8A5AD000582BB8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9379D62A8A5AD000582BB8 /* SearchResult.swift */; };
+		2C9379D72A8A5AD000582BB8 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9379D62A8A5AD000582BB8 /* RepositorySearchResult.swift */; };
 		2C9379D92A8A5BDE00582BB8 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9379D82A8A5BDE00582BB8 /* Repository.swift */; };
+		2C9864362ACD760F00F55F72 /* SearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9864352ACD760F00F55F72 /* SearchItem.swift */; };
+		2C9864382ACD777600F55F72 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9864372ACD777600F55F72 /* SearchResult.swift */; };
 		2CA92A1E2A8CE51E00FF6FD1 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA92A1D2A8CE51E00FF6FD1 /* IssueViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,8 +41,10 @@
 		2C81908B2AB9BBDD00DE1603 /* CommitSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitSearchResult.swift; sourceTree = "<group>"; };
 		2C81908F2AB9BF8800DE1603 /* CommitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewController.swift; sourceTree = "<group>"; };
 		2C8190932AB9C90E00DE1603 /* CommitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
-		2C9379D62A8A5AD000582BB8 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		2C9379D62A8A5AD000582BB8 /* RepositorySearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchResult.swift; sourceTree = "<group>"; };
 		2C9379D82A8A5BDE00582BB8 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		2C9864352ACD760F00F55F72 /* SearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItem.swift; sourceTree = "<group>"; };
+		2C9864372ACD777600F55F72 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		2CA92A1D2A8CE51E00FF6FD1 /* IssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +81,7 @@
 				2C8013CD2A7A5E2800CFAF97 /* AppDelegate.swift */,
 				2C8013CF2A7A5E2800CFAF97 /* SceneDelegate.swift */,
 				2C9379DA2A8A5C4C00582BB8 /* Model */,
+				2C9864392ACD785000F55F72 /* Protocol */,
 				2C8190952AB9CA1E00DE1603 /* Controller */,
 				2C8190932AB9C90E00DE1603 /* CommitTableViewCell.swift */,
 				2C8013D32A7A5E2800CFAF97 /* Main.storyboard */,
@@ -101,13 +106,22 @@
 			isa = PBXGroup;
 			children = (
 				2C9379D82A8A5BDE00582BB8 /* Repository.swift */,
-				2C9379D62A8A5AD000582BB8 /* SearchResult.swift */,
+				2C9379D62A8A5AD000582BB8 /* RepositorySearchResult.swift */,
 				2C572F702A90E910004D086D /* Issue.swift */,
 				2C572F722A90EA68004D086D /* IssueSearchResult.swift */,
 				2C8190892AB9BB9400DE1603 /* Commit.swift */,
 				2C81908B2AB9BBDD00DE1603 /* CommitSearchResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2C9864392ACD785000F55F72 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2C9864352ACD760F00F55F72 /* SearchItem.swift */,
+				2C9864372ACD777600F55F72 /* SearchResult.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,15 +197,17 @@
 			files = (
 				2C81908A2AB9BB9400DE1603 /* Commit.swift in Sources */,
 				2C572F732A90EA68004D086D /* IssueSearchResult.swift in Sources */,
+				2C9864362ACD760F00F55F72 /* SearchItem.swift in Sources */,
 				2C8013D22A7A5E2800CFAF97 /* RepositoryViewController.swift in Sources */,
 				2C572F712A90E910004D086D /* Issue.swift in Sources */,
 				2C8190942AB9C90E00DE1603 /* CommitTableViewCell.swift in Sources */,
 				2C8013CE2A7A5E2800CFAF97 /* AppDelegate.swift in Sources */,
 				2C9379D92A8A5BDE00582BB8 /* Repository.swift in Sources */,
+				2C9864382ACD777600F55F72 /* SearchResult.swift in Sources */,
 				2CA92A1E2A8CE51E00FF6FD1 /* IssueViewController.swift in Sources */,
 				2C81908C2AB9BBDD00DE1603 /* CommitSearchResult.swift in Sources */,
 				2C8190902AB9BF8800DE1603 /* CommitViewController.swift in Sources */,
-				2C9379D72A8A5AD000582BB8 /* SearchResult.swift in Sources */,
+				2C9379D72A8A5AD000582BB8 /* RepositorySearchResult.swift in Sources */,
 				2C8013D02A7A5E2800CFAF97 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
