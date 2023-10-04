@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct SearchResult: Codable {
+struct RepositorySearchResult: SearchResult {
     let items: [Repository]
 }

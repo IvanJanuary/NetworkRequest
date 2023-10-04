@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct IssueSearchResult: Codable {
+struct IssueSearchResult: SearchResult {
     let items: [Issue]
 }
