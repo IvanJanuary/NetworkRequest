@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Issue: Codable {
+struct Issue: SearchItem {
     let title: String
     let url: String?
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct CommitSearchResult: Codable {
+struct CommitSearchResult: SearchResult {
     let items: [CommitItem]
 }

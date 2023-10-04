@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Repository: Codable {
+struct Repository: SearchItem {
     let name: String
     let description: String?
 }

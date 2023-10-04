@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CommitItem: Codable {
+struct CommitItem: SearchItem {
     let commit: Commit
     let url: String?
     let repository: Repository?
