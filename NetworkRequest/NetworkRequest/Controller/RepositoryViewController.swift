@@ -35,28 +35,11 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
         }
         
         let api = "https://api.github.com/search/repositories?q=\(query)"
-        guard let url = URL(string: api) else { fatalError("some Error") }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            if let error = error {
-                print("Ошибка запроса: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(T.self, from: data) // T.self instead RepositorySearchResult.self
-                DispatchQueue.main.async {
-                    self.repositories = searchResult.items as? [Repository] ?? [] // unwrapped as? [Repository] ?? []
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Decoding error JSON: \(error)")
-            }
+        let helper = GitHubHelper()
+        helper.search(withQuery: api, type: RepositorySearchResult.self) { searchItems in
+        self.repositories = searchItems as? [Repository] ?? []
+        self.tableView.reloadData()
         }
-        task.resume()
     }
 }
 
