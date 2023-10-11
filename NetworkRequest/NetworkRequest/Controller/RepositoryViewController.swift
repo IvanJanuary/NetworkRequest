@@ -36,7 +36,10 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
         
         let api = "https://api.github.com/search/repositories?q=\(query)"
         let helper = GitHubHelper()
-        helper.search(withQuery: api, type: RepositorySearchResult.self) { searchItems in
+        helper.search(withQuery: api, type: RepositorySearchResult.self) { [weak self] searchItems in
+            guard let self = self else {
+                return
+            }
         self.repositories = searchItems as? [Repository] ?? []
         self.tableView.reloadData()
         }
