@@ -36,7 +36,10 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
         
         let api = "https://api.github.com/search/issues?q=\(query)"
         let helper = GitHubHelper()
-        helper.search(withQuery: api, type: IssueSearchResult.self) { searchItems in
+        helper.search(withQuery: api, type: IssueSearchResult.self) { [weak self] searchItems in
+            guard let self = self else {
+                return
+            }
             self.issues = searchItems as? [Issue] ?? []
             self.tableView.reloadData()
         }
