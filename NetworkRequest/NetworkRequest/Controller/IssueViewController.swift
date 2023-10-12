@@ -34,29 +34,15 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        let api = "https://api.github.com/search/issues?q=\(query)" 
-        guard let url = URL(string: api) else { fatalError("some Error") }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            if let error = error {
-                print("Request error: \(error.localizedDescription)")
+        let api = "https://api.github.com/search/issues?q=\(query)"
+        let helper = GitHubHelper()
+        helper.search(withQuery: api, type: IssueSearchResult.self) { [weak self] searchItems in
+            guard let self = self else {
                 return
             }
-            
-            guard let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(T.self, from: data)   //T.self instead IssueSearchResult.self
-                DispatchQueue.main.async {
-                    self.issues = searchResult.items as? [Issue] ?? []   //unwrapped as? [Issue] ?? []
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("JSON decoding error: \(error)")
-            }
+            self.issues = searchItems as? [Issue] ?? []
+            self.tableView.reloadData()
         }
-        task.resume()
     }
 }
 

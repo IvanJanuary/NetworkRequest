@@ -36,28 +36,14 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
         }
         
         let api = "https://api.github.com/search/commits?q=\(query)"
-        guard let url = URL(string: api) else { fatalError("some Error") }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            if let error = error {
-                print("Request error: \(error.localizedDescription)")
+        let helper = GitHubHelper()
+        helper.search(withQuery: api, type: CommitSearchResult.self) { [weak self] searchItems in
+            guard let self = self else {
                 return
             }
-            
-            guard let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let searchResult = try decoder.decode(T.self, from: data) //T.self instead CommitSearchResult.self
-                DispatchQueue.main.async {
-                    self.commits = searchResult.items as? [CommitItem] ?? [] //unwrapped as? [CommitItem] ?? []
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("JSON decoding error: \(error)")
-            }
+            self.commits = searchItems as? [CommitItem] ?? [] 
+            self.tableView.reloadData()
         }
-        task.resume()
     }
 }
 
