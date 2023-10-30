@@ -35,7 +35,7 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        let api = "https://api.github.com/search/commits?q=\(query)"
+        let api = "https://api.github.com/search/commits?per_page=10&q=\(query)"
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: CommitSearchResult.self) { [weak self] searchItems in
             guard let self = self else {

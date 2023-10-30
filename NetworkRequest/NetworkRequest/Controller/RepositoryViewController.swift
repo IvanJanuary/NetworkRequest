@@ -26,7 +26,7 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
         guard let searchText = searchBar.text else { return }
         searchRepositories(withQuery: searchText, type: RepositorySearchResult.self) //type: RepositorySearchResult.self
     }
-                                                                            
+
     private func searchRepositories<T: SearchResult>(withQuery query: String, type: T.Type) { //<T: SearchResult> type: T.Type
         guard !query.isEmpty else {
             repositories.removeAll()
@@ -34,7 +34,7 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        let api = "https://api.github.com/search/repositories?q=\(query)"
+        let api = "https://api.github.com/search/repositories?per_page=10&q=\(query)"
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: RepositorySearchResult.self) { [weak self] searchItems in
             guard let self = self else {
