@@ -9,7 +9,6 @@ import UIKit
 
 class RepositoryViewController: UIViewController, UISearchBarDelegate {
     
-    var buttonMore = UIButton()
     var searchText: String = ""
     var page = 1
 
@@ -25,32 +24,15 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
-        buttonMore = UIButton(type: .roundedRect)
-        buttonMore.frame = CGRect(x: 0, y: 0, width: 64, height: 35)
-        buttonMore.backgroundColor = .systemTeal
-        buttonMore.layer.cornerRadius = 5
-        buttonMore.translatesAutoresizingMaskIntoConstraints = false
-        buttonMore.setTitle("More", for: .normal)
-        buttonMore.setTitleColor(UIColor.white, for: .normal)
-    
-        buttonMore.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
-        self.view.addSubview(buttonMore)
-        
-        buttonMoreConstraint()
+        activityIndicatorConstraint()
     }
     
-    func buttonMoreConstraint() {
+    func activityIndicatorConstraint() {
         //buttonMore.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 150).isActive = true
         buttonMore.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/4).isActive = true
         buttonMore.heightAnchor.constraint(equalToConstant: 35).isActive = true
         buttonMore.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         buttonMore.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
-    }
-    
-    @objc func pressButton(sender: UIButton) {
-        print("Button is pressed")
-        page += 1
-        searchRepositories(withQuery: searchText, page: "\(page)", type: RepositorySearchResult.self)
     }
 
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

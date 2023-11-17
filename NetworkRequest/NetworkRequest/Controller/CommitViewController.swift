@@ -9,7 +9,6 @@ import UIKit
 
 class CommitViewController: UIViewController, UISearchBarDelegate {
     
-    var buttonMore = UIButton()
     var searchText: String = ""
     var page = 1
 
@@ -26,21 +25,10 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
-        buttonMore = UIButton(type: .roundedRect)
-        buttonMore.frame = CGRect(x: 0, y: 0, width: 64, height: 35)
-        buttonMore.backgroundColor = .systemTeal
-        buttonMore.layer.cornerRadius = 5
-        buttonMore.translatesAutoresizingMaskIntoConstraints = false
-        buttonMore.setTitle("More", for: .normal)
-        buttonMore.setTitleColor(UIColor.white, for: .normal)
-    
-        buttonMore.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
-        self.view.addSubview(buttonMore)
-        
-        buttonMoreConstraint()
+        activityIndicatorConstraint()
     }
     
-    func buttonMoreConstraint() {
+    func activityIndicatorConstraint() {
         //buttonMore.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 150).isActive = true
         buttonMore.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/4).isActive = true
         buttonMore.heightAnchor.constraint(equalToConstant: 35).isActive = true
