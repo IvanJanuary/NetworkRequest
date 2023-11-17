@@ -84,5 +84,14 @@ extension IssueViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = issue.url ?? "No description available"
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.row + 1) % 10 == 0  && indexPath.row == (page * 10) - 1 {
+            print("indexPath: \(indexPath.row + 1)")
+            page += 1
+            searchIssues(withQuery: searchText, page: "\(page)", type: IssueSearchResult.self)
+        }
+    }
 }
+
 

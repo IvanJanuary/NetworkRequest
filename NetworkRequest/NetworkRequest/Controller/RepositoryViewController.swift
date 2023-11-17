@@ -57,7 +57,7 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
         isLoading = true
         activityIndicator.startAnimating()
         
-        let api = "https://api.github.com/search/repositories?page=1&per_page=10&q=\(query)"
+        let api = "https://api.github.com/search/repositories?page=1&per_page=20&q=\(query)"
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: RepositorySearchResult.self) { [weak self] searchItems in
             guard let self = self else {
@@ -84,4 +84,12 @@ extension RepositoryViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = repository.description ?? "No description available"
         return cell
     }
+    
+        func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            if (indexPath.row + 1) % 10 == 0  && indexPath.row == (page * 10) - 1 {
+                print("indexPath: \(indexPath.row + 1)")
+                page += 1
+                searchRepositories(withQuery: searchText, page: "\(page)", type: RepositorySearchResult.self)
+            }
+        }
 }

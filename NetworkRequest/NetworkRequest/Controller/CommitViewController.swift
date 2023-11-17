@@ -58,7 +58,7 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
         isLoading = true
         activityIndicator.startAnimating()
         
-        let api = "https://api.github.com/search/commits?page=1&per_page=10&q=\(query)"
+        let api = "https://api.github.com/search/commits?page=1&per_page=20&q=\(query)"
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: CommitSearchResult.self) { [weak self] searchItems in
             guard let self = self else {
@@ -101,7 +101,17 @@ extension CommitViewController: UITableViewDataSource, UITableViewDelegate {
           func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return UITableView.automaticDimension
           }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.row + 1) % 10 == 0  && indexPath.row == (page * 10) - 1 {
+            print("indexPath: \(indexPath.row + 1)")
+            page += 1
+            searchCommits(withQuery: searchText, page: "\(page)", type: CommitSearchResult.self)
+        }
+    }
 }
+    
+
     
     
     
