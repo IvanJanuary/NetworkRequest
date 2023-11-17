@@ -11,9 +11,11 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
     
     var searchText: String = ""
     var page = 1
+    var isLoading = true
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var issues: [Issue] = []
 
@@ -24,24 +26,16 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
-        
         activityIndicatorConstraint()
     }
     
     func activityIndicatorConstraint() {
-        //buttonMore.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 150).isActive = true
-        buttonMore.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/4).isActive = true
-        buttonMore.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        buttonMore.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        buttonMore.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+        activityIndicator.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
     }
     
-    @objc func pressButton(sender: UIButton) {
-        print("Button is pressed")
-        page += 1
-        searchIssues(withQuery: searchText, page: "\(page)", type: IssueSearchResult.self)
-    }
-        
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else {
             return
@@ -60,6 +54,9 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
+        isLoading = true
+        activityIndicator.startAnimating()
+        
         let api = "https://api.github.com/search/issues?page=1&per_page=10&q=\(query)" 
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: IssueSearchResult.self) { [weak self] searchItems in
@@ -68,6 +65,9 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             }
             self.issues.append(contentsOf: searchItems as? [Issue] ?? [])
             self.tableView.reloadData()
+            
+            self.isLoading = false
+            self.activityIndicator.stopAnimating()
         }
     }
 }

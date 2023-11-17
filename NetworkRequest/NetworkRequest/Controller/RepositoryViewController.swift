@@ -11,9 +11,11 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
     
     var searchText: String = ""
     var page = 1
+    var isLoading = true
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var repositories: [Repository] = []
 
@@ -28,11 +30,10 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
     }
     
     func activityIndicatorConstraint() {
-        //buttonMore.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 150).isActive = true
-        buttonMore.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/4).isActive = true
-        buttonMore.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        buttonMore.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        buttonMore.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+        activityIndicator.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
     }
 
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -53,6 +54,9 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
+        isLoading = true
+        activityIndicator.startAnimating()
+        
         let api = "https://api.github.com/search/repositories?page=1&per_page=10&q=\(query)"
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: RepositorySearchResult.self) { [weak self] searchItems in
@@ -60,7 +64,10 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
                 return
             }
             self.repositories.append(contentsOf: searchItems as? [Repository] ?? [])
-        self.tableView.reloadData()
+            self.tableView.reloadData()
+            
+            self.isLoading = false
+            self.activityIndicator.stopAnimating()
         }
     }
 }
