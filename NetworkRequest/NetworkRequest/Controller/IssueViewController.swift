@@ -9,13 +9,13 @@ import UIKit
 
 class IssueViewController: UIViewController, UISearchBarDelegate {
     
+    var activityIndicator = UIActivityIndicatorView()
     var searchText: String = ""
     var page = 1
     var isLoading = true
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var issues: [Issue] = []
 
@@ -26,10 +26,15 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        self.view.addSubview(activityIndicator)
+        
         activityIndicatorConstraint()
     }
     
     func activityIndicatorConstraint() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.widthAnchor.constraint(equalToConstant: 25).isActive = true
         activityIndicator.heightAnchor.constraint(equalToConstant: 25).isActive = true
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -87,7 +92,6 @@ extension IssueViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (indexPath.row + 1) % 10 == 0  && indexPath.row == (page * 10) - 1 {
-            print("indexPath: \(indexPath.row + 1)")
             page += 1
             searchIssues(withQuery: searchText, page: "\(page)", type: IssueSearchResult.self)
         }

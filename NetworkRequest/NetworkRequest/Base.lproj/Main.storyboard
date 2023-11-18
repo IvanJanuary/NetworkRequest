@@ -37,10 +37,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nsS-bR-5WC">
-                                <rect key="frame" x="183" y="736" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -56,7 +52,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Repositories" id="tmX-43-A5n"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="nsS-bR-5WC" id="EdC-Pl-6dj"/>
                         <outlet property="searchBar" destination="hh9-38-fuo" id="tLU-od-puc"/>
                         <outlet property="tableView" destination="mn0-0p-3Iz" id="VMw-tt-Ees"/>
                     </connections>
@@ -168,10 +163,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="McZ-NN-Va0">
-                                <rect key="frame" x="183" y="736" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XJj-Bi-wVW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -187,7 +178,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Issures" id="zej-dl-wPi"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="McZ-NN-Va0" id="Rch-Oc-bhb"/>
                         <outlet property="searchBar" destination="k44-eR-ltW" id="IwI-c7-3jV"/>
                         <outlet property="tableView" destination="kgY-dE-aL8" id="EQs-dZ-uuM"/>
                     </connections>
@@ -273,10 +263,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-BW-4Oo">
-                                <rect key="frame" x="183" y="736" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eg5-mr-ZSX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -292,7 +278,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Commits" id="zKm-8C-VHe"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="nfL-BW-4Oo" id="VSc-Gq-dYV"/>
                         <outlet property="searchBar" destination="ej9-NZ-khF" id="Ok3-bh-4Tg"/>
                         <outlet property="tableView" destination="WuQ-I9-V2p" id="3T1-X6-xgq"/>
                     </connections>
