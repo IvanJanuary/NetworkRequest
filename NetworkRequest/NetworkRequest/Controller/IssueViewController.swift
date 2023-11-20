@@ -9,7 +9,7 @@ import UIKit
 
 class IssueViewController: UIViewController, UISearchBarDelegate {
     
-    var buttonMore = UIButton()
+    var activityIndicator = UIActivityIndicatorView()
     var searchText: String = ""
     var page = 1
 
@@ -25,34 +25,21 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
-        buttonMore = UIButton(type: .roundedRect)
-        buttonMore.frame = CGRect(x: 0, y: 0, width: 64, height: 35)
-        buttonMore.backgroundColor = .systemTeal
-        buttonMore.layer.cornerRadius = 5
-        buttonMore.translatesAutoresizingMaskIntoConstraints = false
-        buttonMore.setTitle("More", for: .normal)
-        buttonMore.setTitleColor(UIColor.white, for: .normal)
-    
-        buttonMore.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
-        self.view.addSubview(buttonMore)
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        self.view.addSubview(activityIndicator)
         
-        buttonMoreConstraint()
+        activityIndicatorConstraint()
     }
     
-    func buttonMoreConstraint() {
-        //buttonMore.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 150).isActive = true
-        buttonMore.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/4).isActive = true
-        buttonMore.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        buttonMore.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        buttonMore.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+    func activityIndicatorConstraint() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
     }
     
-    @objc func pressButton(sender: UIButton) {
-        print("Button is pressed")
-        page += 1
-        searchIssues(withQuery: searchText, page: "\(page)", type: IssueSearchResult.self)
-    }
-        
     @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else {
             return
@@ -71,6 +58,8 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
+        activityIndicator.startAnimating()
+        
         let api = "https://api.github.com/search/issues?page=1&per_page=10&q=\(query)" 
         let helper = GitHubHelper()
         helper.search(withQuery: api, type: IssueSearchResult.self) { [weak self] searchItems in
@@ -79,6 +68,8 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             }
             self.issues.append(contentsOf: searchItems as? [Issue] ?? [])
             self.tableView.reloadData()
+            
+            self.activityIndicator.stopAnimating()
         }
     }
 }
@@ -95,5 +86,13 @@ extension IssueViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = issue.url ?? "No description available"
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.row + 1) % 10 == 0  && indexPath.row == (page * 10) - 1 {
+            page += 1
+            searchIssues(withQuery: searchText, page: "\(page)", type: IssueSearchResult.self)
+        }
+    }
 }
+
 
