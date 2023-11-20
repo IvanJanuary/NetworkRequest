@@ -12,7 +12,6 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
     var activityIndicator = UIActivityIndicatorView()
     var searchText: String = ""
     var page = 1
-    var isLoading = true
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -59,7 +58,6 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        isLoading = true
         activityIndicator.startAnimating()
         
         let api = "https://api.github.com/search/issues?page=1&per_page=10&q=\(query)" 
@@ -71,7 +69,6 @@ class IssueViewController: UIViewController, UISearchBarDelegate {
             self.issues.append(contentsOf: searchItems as? [Issue] ?? [])
             self.tableView.reloadData()
             
-            self.isLoading = false
             self.activityIndicator.stopAnimating()
         }
     }

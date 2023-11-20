@@ -12,7 +12,6 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
     var activityIndicator = UIActivityIndicatorView()
     var searchText: String = ""
     var page = 1
-    var isLoading = true
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -60,7 +59,6 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        isLoading = true
         activityIndicator.startAnimating()
         
         let api = "https://api.github.com/search/commits?page=1&per_page=20&q=\(query)"
@@ -72,7 +70,6 @@ class CommitViewController: UIViewController, UISearchBarDelegate {
             self.commits.append(contentsOf: searchItems as? [CommitItem] ?? [])
             self.tableView.reloadData()
             
-            self.isLoading = false
             self.activityIndicator.stopAnimating()
         }
     }

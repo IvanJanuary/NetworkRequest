@@ -12,7 +12,7 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
     var activityIndicator = UIActivityIndicatorView()
     var searchText: String = ""
     var page = 1
-    var isLoading = true
+
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -59,7 +59,6 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
             return
         }
         
-        isLoading = true
         activityIndicator.startAnimating()
         
         let api = "https://api.github.com/search/repositories?page=1&per_page=20&q=\(query)"
@@ -71,7 +70,6 @@ class RepositoryViewController: UIViewController, UISearchBarDelegate {
             self.repositories.append(contentsOf: searchItems as? [Repository] ?? [])
             self.tableView.reloadData()
             
-            self.isLoading = false
             self.activityIndicator.stopAnimating()
         }
     }
